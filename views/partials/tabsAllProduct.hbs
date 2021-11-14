@@ -1,0 +1,78 @@
+<section class="py-3 allProduct">
+
+    <div class="container py-4">
+
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Tabs nav -->
+                <div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+                    <a class="nav-link mb-2 shadow active" id="v-pills-all-tab" data-toggle="pill" href="#v-pills-all" role="tab" aria-controls="v-pills-all" aria-selected="true">
+                        <span class="font-weight-bold small text-uppercase">{{data.all_products.title}}</span></a>
+                        
+               {{#each data.categories}}
+                        <a class="nav-link mb-2 shadow" id="v-pills-{{this._id}}-tab" data-toggle="pill" href="#v-pills-{{this._id}}" role="tab" aria-controls="v-pills-{{this._id}}" aria-selected="false">
+                            <span class="font-weight-bold small text-uppercase">{{this.ct_name}}</span>
+                        </a>
+            {{/each }}
+
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <!-- Tabs content -->
+                <div class="tab-content" id="v-pills-tabContent">
+                    <!--  -->
+                    <div class="tab-pane fade shadow rounded bg-white show active p-4" id="v-pills-all" role="tabpanel" aria-labelledby="v-pills-all-tab">
+                        <h4 class="font-italic mb-4">All products</h4>
+                        <div class="row">
+                             {{#each data.all_products.docs}}
+                            <div class="col-lg-4 col-sm-6 col-xs-12">
+                                <div class="item" href="#">
+                                    <div class="img-hover-zoom " >  
+                                          <img src="../img/{{this.image}}" class="w-80" alt="This zooms-in really well and smooth">
+                                    </div>
+                                    <div class="content text-center">
+                                    <span class="name">{{this.name}}</span>
+                                    <p>Price :{{this.price}} VND</p>
+                                    <button class="button"><a href="{{this.request.url}}" style="color: white; text-decoration: none ;">Learn more </a></button>
+                                </div>
+                                </div>
+                            </div>
+                           {{/each }}   
+
+                        </div>  
+                    </div>
+
+                   {{#each data.categories}}
+                        <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-{{this._id}}" role="tabpanel" aria-labelledby="v-pills-{{this._id}}-tab">
+                            <h4 class="font-italic mb-4">{{this.ct_name}}</h4>
+                            <div class="row">
+
+                           {{#each this.products}}
+                                        <!--  -->
+                                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                                            <div class="item" href="#">
+                                                <div class="img-hover-zoom " >  
+                                                    <img src="../img/{{this.image}}" class="w-80" alt="This zooms-in really well and smooth">
+                                                </div>
+                                                <div class="content text-center">
+                                                <span class="name">{{this.name}}</span>
+                                                <p>Price :{{this.price}} VND</p>
+                                                <button class="button"><a href="/layout/product-detail/?key=<%=data._id%>" style="color: white; text-decoration: none ;">Tìm hiểu thêm </a></button>
+                                            </div>
+                                            </div>
+                                        </div>
+                                   
+                            {{/each}}    
+                            </div>
+                        </div>
+           
+                    {{/each}}    
+                    <!--  -->
+                </div>
+                <!-- end tab content -->
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,27 @@
+<section class="new">
+  <div class="container">
+    <h1><a id="newIn">MY MENU</a></h1>
+    <div class="row">
+
+    {{#each data.products}}
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="item mb-5">
+          <div class="img position-relative overflow-hidden content-hover">
+            <img class="w-100" src="/./img/{{this.image}}" />
+            <div class="info d-flex justify-content-center align-items-center flex-column position-absolute text-white">
+
+              <a class="d-block mt-3 mb-2 text-white text-decoration-none"
+                style="outline: 1px solid orange; padding :5px" id="{{this._id}}"
+                href="{{this.request.url}}">Product detail</a>
+
+            </div>
+          </div>
+          <h4 class="text-center">{{this.name}}</h4>
+          <p class="text-center">Price :{{this.price}} VND</p>
+
+        </div>
+      </div>
+    {{/each}}
+    </div>
+  </div>
+</section>

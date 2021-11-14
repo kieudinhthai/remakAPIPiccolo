@@ -1,0 +1,206 @@
+
+    {{>sidebarAdmin}}
+        <div class="page">
+            {{>headerAdmin}}
+           
+                <section id="tabs" class="m-5">
+                    <div class="container">
+                        <h6 class="section-title h1">Category Control</h6>
+                        <div class="row">
+                            <div class="col-12 ">
+                                <nav>
+                                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
+                                            href="#nav-home" role="tab" aria-controls="nav-home"
+                                            aria-selected="true">All Category</a>
+                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                                            href="#nav-profile" role="tab" aria-controls="nav-profile"
+                                            aria-selected="false">Add new Category</a>
+                                    </div>
+                                </nav>
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-10">
+                                    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                            aria-labelledby="nav-home-tab">
+                                            <table class="table">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th>#</th>
+ 
+                                                        <th>Category Name</th>
+                                                        <th>VN Category Name</th>
+                                                        <th>Products</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                  {{#each data.categories}}
+                                                        <tr>
+                                                            <td scope="row"><span class="mt-2">{{this.stt}}</span></td>
+
+                                                            <td><span class="mt-2">{{this.ct_name}}</span></td>
+                                                            <td><span class="mt-2">{{this.vn_ct_name}}</span></td>
+                                                            <td><span class="mt-2">{{#each this.products}}
+                                                                {{this.name}},
+                                                                {{/each}}
+                                                            </span></td>
+                                                            <td>
+                                                              
+                                                                    <a  onclick= "get_data('{{this.ct_name}}','{{this.vn_ct_name}}','{{this._id}}')" class="update_category" data-toggle="modal" data-target="#modalEdit" href="">
+                                                                        <i class="fas fa-edit"></i>
+                                                                    </a>
+
+                                                            </td>
+                                                            
+                                                            <td><a onclick="get_id_delete('{{this._id}}')" data-toggle="modal" data-delete="{{this._id}}" class="delete_category"
+                                                                    data-target="#exampleModalLong" href=""><i
+                                                                        style="color: red;" class="fas fa-trash-alt"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    {{/each}}                                              
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                            aria-labelledby="nav-profile-tab">
+                                                        <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center">
+                        
+                        <h4>Add new category </h4>
+                    </div>
+                    <div class="card-body">
+                      <form class="form-horizontal" action="/admin/categories" method="POST">
+                        <div class="form-group row">
+                          <label class="col-3 form-control-lable">Category name</label>
+                          <div class="col-9">
+                            <input type="text" id="ct_name" name="ct_name" class="form-control">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 form-control-label">VN Category name</label>
+                            <div class="col-9">
+                              <input type="text" id="vn_ct_name" name="vn_ct_name" class="form-control">
+                            </div>
+                          </div>
+    
+
+                        <div class="form-group row">
+                          <div class="col-6 offset-2">
+ 
+                            <button type="button" class="btn btn-secondary" >Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                                        </div>
+    
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        </div>
+
+        <!-- Modal -->
+        <!-- xoas category -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Delete category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to delete this item?
+                    </div>
+                     <form name="delete-form" action="/admin/categories?_method=DELETE"  method="POST">
+                    <div class="modal-footer">
+                        <button type="submit" id="btn_delete" name="id_delete" class="btn btn-primary">Delete</button>
+                        <button type="button"  class="btn btn-secondary " data-dismiss="modal">Close</button>
+
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <!-- Cập nhật - chỉnh sửa thông tin -->
+        <div class="modal-dialog modal-dialog-edit" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Update category infomation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal col-md-8" action="/admin/categories?_method=PATCH" method="POST" >
+                        
+                        <div class="form-group row">
+                          <label class="col-3 form-control-label">VN category name</label>
+                          <div class="col-9">
+                            <input type="text" id="vn_ct_name_input" name="vn_ct_name" class="form-control">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-3 form-control-label">Category name</label>
+                            <div class="col-9">
+                              <input type="text" id="ct_name_input" name="ct_name" class="form-control">
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" id="btn_save_change" name="_id" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+
+                        </div>
+                      </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+   
+
+
+
+<style>
+    .modal-dialog-edit{
+        max-width: 756px;
+    }
+</style>
+
+
+<script>
+    
+    function get_data(ct_name, vn_ct_name,_id){
+     var vn_ct_name_input  =document.getElementById("vn_ct_name_input");
+     var ct_name_input  =document.getElementById("ct_name_input");
+     var btn_save_change  =document.getElementById("btn_save_change");
+     
+     vn_ct_name_input.setAttribute("value",vn_ct_name)
+     ct_name_input.setAttribute("value",ct_name)
+     btn_save_change.setAttribute("value",_id)
+    }
+    
+    function get_id_delete(_id){
+        var btn_delete  =document.getElementById("btn_delete");
+        btn_delete.setAttribute("value",_id)
+    }
+</script>

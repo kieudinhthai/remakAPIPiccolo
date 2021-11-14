@@ -1,0 +1,126 @@
+
+ 
+  {{>sidebarAdmin}}
+   <div class="page">
+   {{>headerAdmin}}
+    <section class="dashboard-counts section-padding">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Count item widget-->
+          <div class="col-xl-4 col-md-4 col-12 d-flex justify-content-center mt-5">
+            <div class="wrapper count-title d-flex ">
+              <div class="icon"><i class="fab fa-product-hunt "></i></div>
+              <div class="name"><strong class="text-uppercase ">All Product</strong>
+                <div class="count-number  text-center ">{{data.all_products.count}}</div>
+              </div>
+            </div>
+          </div>
+          <!-- Count item widget-->
+          <div class="col-xl-4 col-md-4 col-12 d-flex justify-content-center mt-5">
+            <div class="wrapper count-title d-flex">
+              <div class="icon"><i class="fas fa-store"></i></div>
+              <div class="name"><strong class="text-uppercase">All Category</strong>
+                <div class="count-number text-center ">{{data.all_categories.count}}</div>
+              </div>
+            </div>
+          </div>
+          <!-- Count item widget-->
+          <div class="col-xl-4 col-md-4 col-12 d-flex justify-content-center mt-5">
+            <div class="wrapper count-title d-flex ">
+              <div class="icon"><i class="fas fa-blog"></i></div>
+              <div class="name"><strong class="text-uppercase ">All Blog</strong>
+                <div class="count-number  text-center ">{{data.all_blogs.count}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container px-5 table-responsive ">
+      <h3>Table products </h3>
+      <table id="example" class="table table-striped data-table mb-5">
+        <thead class="thead-dark">
+          <tr> 
+              <th>STT</th>  
+              <th>name</th>
+              <th>vn_name</th>
+              <th>description</th>
+              <th>category</th>
+              <th>price</th>
+
+          </tr>
+      </thead>
+      <tbody>
+          {{#each data.all_products.products}}
+          <tr>
+              <td scope="row">{{this.stt}}</td>
+              <td>{{this.name}}</td>
+              <td>{{this.vn_name}}</td>
+              <td>{{this.description}}</td>
+              <td>{{this.category.ct_name}}</td>
+              <td>{{this.price}}</td>
+          </tr>
+         {{/each}}
+          
+      </tbody>
+
+      </table>
+    </section>
+    <section class="container  px-5 table-responsive ">
+      <div class="row">
+        <div class="col-6">
+        <h3>Table Category </h3>
+      <table id="example" class="table table-striped data-table">
+        <thead class="thead-dark">
+          <tr> 
+              <th>STT</th>  
+              <th>Ct_name</th>
+              <th>VN_ct_name</th>
+              
+          </tr>
+      </thead>
+      <tbody>
+          {{#each data.all_categories.categories}}
+          <tr>
+              <td scope="row">{{this.stt}}</td>
+              <td>{{this.ct_name}}</td>
+              <td>{{this.vn_ct_name}}</td>
+              
+              
+              
+          </tr>
+         {{/each}}
+          
+      </tbody>
+
+      </table>
+      </div>
+   <div class="col-6">
+        <h3>Table Blog </h3>
+      <table id="example" class="table table-striped data-table">
+        <thead class="thead-dark">
+          <tr> 
+              <th>STT</th>  
+              <th>Blogger_name</th>
+              <th>Content</th>
+              
+          </tr>
+      </thead>
+      <tbody>
+          {{#each data.all_blogs.blogs}}
+          <tr>
+              <td scope="row">{{this.stt}}</td>
+              <td>{{this.blogger_name}}</td>
+              <td>{{this.content}}</td>
+
+          </tr>
+         {{/each}}
+          
+      </tbody>
+
+      </table>
+      </div>
+      </div>
+    </section>
+   </div>
