@@ -60,7 +60,7 @@ exports.get_all_product=(req, res, next) => {
         })
 
     
-        .catch((err) => { res.status(500).json({ err: err }) })
+        .catch((err) => { res.status(404).json({ err: err }) })
 }
 
 /**
@@ -119,7 +119,7 @@ exports.search_product=(req, res, next) => {
         })
 
     
-        .catch((err) => { res.status(500).json({ err: err }) })
+        .catch((err) => { res.status(404).json({ err: err }) })
 }
 /**
  * GET /products/:_id
@@ -155,9 +155,9 @@ exports.get_detail_product =(req, res, next) => {
                         }
                     })
                 })
-                .catch((err) => { res.status(500).json({ err: err }) })
+                .catch((err) => { res.status(404).render('error')})
         })
-        .catch((err) => { res.status(500).json({ err: err }) })
+        .catch((err) => { res.status(404).render('error')})
 }
 
 /**
@@ -185,9 +185,3 @@ exports.post_comment =(req, res, next) => {
         .catch((err) => { res.status(500).json({ err: err }) })
 }
 
-/**
- *GET /:slug
- */
- exports.get_err =(req,res)=>{
-    res.render('customer_views/error')
-    }

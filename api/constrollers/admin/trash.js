@@ -136,10 +136,3 @@ exports.restore_product= (req, res, next) => {
         .catch((err) => res.status(500).json({ err: err }));
 }
 
-/**
- *GET admin/trash/:slug
- */
-
- exports.get_err =(req,res)=>{
-    res.render('customer_views/error')
-    }

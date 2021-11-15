@@ -78,10 +78,3 @@ exports.get_admin = (req, res) => {
     
  }
 
- /**
- *GET admin/account/:slug
- */
-
- exports.get_err =(req,res)=>{
-    res.render('customer_views/error')
-    }

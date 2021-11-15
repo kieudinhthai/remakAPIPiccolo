@@ -6,8 +6,8 @@ const Category = require('../../models/categories')
 const CheckAuth = require('../../middleware/check_auth')
 
 const adminCategoryConstrollers = require('../../constrollers/admin/categories')
-/* GET  err. */
-router.get("/:slug",CheckAuth,adminCategoryConstrollers.get_err)
+// /* GET  err. */
+// router.get("/:slug",CheckAuth,adminCategoryConstrollers.get_err)
 // GET admin/categories
 router.get('/',CheckAuth,adminCategoryConstrollers.get_categories )
 // POST /admin/category

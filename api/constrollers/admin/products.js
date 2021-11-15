@@ -137,10 +137,3 @@ exports.delete_product = (req, res, next) => {
         .catch(err => { res.status(500).json({ err: err }) })
 }
 
-/**
- * GET admin/products/:slug
- */
-
- exports.get_err =(req,res)=>{
-    res.render('customer_views/error')
-    }

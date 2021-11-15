@@ -9,8 +9,8 @@ router.get('/search',productConstrollers.search_product)
 router.post("/comment/:id",productConstrollers.post_comment )
 // GET /products/:_id
 router.get('/:id',productConstrollers.get_detail_product )
-/* GET  err. */
-router.get("/:slug",productConstrollers.get_err)
+// /* GET  err. */
+// router.get("/:slug",productConstrollers.get_err)
 //GET /products/
 router.get('/',productConstrollers.get_all_product )
 

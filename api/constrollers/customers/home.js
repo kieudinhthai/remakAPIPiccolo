@@ -36,9 +36,3 @@ exports.get_index_customer = (req, res, next) => {
   
   }
   
-/**
- *GET /:slug
- */
-  exports.get_err =(req,res)=>{
-    res.render('customer_views/error')
-    }

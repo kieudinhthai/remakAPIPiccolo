@@ -9,8 +9,8 @@ const Blog = require('../../models/blogs');
 const CheckAuth = require('../../middleware/check_auth')
 const trashAdminConstrollers =require('../../constrollers/admin/trash')
 
-/* GET  err. */
-router.get("/:slug",CheckAuth,trashAdminConstrollers.get_err)
+// /* GET  err. */
+// router.get("/:slug",CheckAuth,trashAdminConstrollers.get_err)
 // GET admin/trash
 router.get('/',CheckAuth,trashAdminConstrollers.get_trash)
 // DELETE admin/trash/product

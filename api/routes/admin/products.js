@@ -4,8 +4,8 @@ const router = express.Router();
 const upload = require('../../middleware/upload')
 const CheckAuth = require('../../middleware/check_auth')
 const productsAdminConstrollers =require('../../constrollers/admin/products')
-/* GET  err. */
-router.get("/:slug",CheckAuth,productsAdminConstrollers.get_err)
+// /* GET  err. */
+// router.get("/:slug",CheckAuth,productsAdminConstrollers.get_err)
 // GET admin/products
 router.get('/',CheckAuth,productsAdminConstrollers.get_products )
 // POST admin/products

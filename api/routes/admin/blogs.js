@@ -4,8 +4,8 @@ const router = express.Router();
 const upload = require('../../middleware/upload')
 const CheckAuth = require('../../middleware/check_auth')
 const blogAdminConstrollers =require('../../constrollers/admin/blogs')
-/* GET  err. */
-router.get("/:slug",CheckAuth,blogAdminConstrollers.get_err)
+// /* GET  err. */
+// router.get("/:slug",CheckAuth,blogAdminConstrollers.get_err)
 // GET /admin/blogs
 router.get('/',CheckAuth,blogAdminConstrollers.get_blogs)
 // POST admin/blogs

@@ -4,8 +4,8 @@ const Account = require('../../models/accounts')
 const CheckAuth = require('../../middleware/check_auth')
 
 const accountConstrollers = require('../../constrollers/admin/account')
-/* GET  err. */
-router.get("/:slug",CheckAuth,accountConstrollers.get_err)
+// /* GET  err. */
+// router.get("/:slug",CheckAuth,accountConstrollers.get_err)
 // POST /admin/account/login
 router.post('/', accountConstrollers.post_login)
 // POST /admin/change-pasword

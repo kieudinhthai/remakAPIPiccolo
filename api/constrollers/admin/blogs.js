@@ -100,10 +100,3 @@ exports.post_blog= (req, res, next) => {
         .catch(err => { res.status(500).json({ err: err }) })
 }
 
-/**
- *GET admin/blog/:slug
- */
-
- exports.get_err =(req,res)=>{
-    res.render('customer_views/error')
-    }

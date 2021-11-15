@@ -66,9 +66,3 @@ exports.get_home_admin =(req, res, next) => {
             })
         })
 }
-/**
- * GET admin/:slug
- */
-exports.get_err = (req,res)=>{
-    res.render('admin_views/error')
-    }
