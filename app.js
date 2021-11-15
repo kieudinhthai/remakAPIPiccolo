@@ -8,11 +8,11 @@ var hbs = require('hbs');
 const methordOverride = require("method-override");
 
 var accountRouter = require('./api/routes/admin/account')
-var indexRouter = require('./api/routes/customers/index');
+var homeRouter = require('./api/routes/customers/home');
 var trashRouter = require('./api/routes/admin/trash');
 var productsRouter = require('./api/routes/customers/products');
 var blogRouter = require('./api/routes/admin/blogs');
-var adminIndexRouter = require('./api/routes/admin/index');
+var adminHomeRouter = require('./api/routes/admin/home');
 var adminProductsRouter = require('./api/routes/admin/products');
 var categoriesRouter = require('./api/routes/admin/categories')
 var app = express();
@@ -49,10 +49,10 @@ app.use('/admin/categories',categoriesRouter);
 app.use('/admin/blogs', blogRouter);
 app.use('/admin/trash', trashRouter);
 app.use('/admin/account', accountRouter);
-app.use('/admin/', adminIndexRouter);
+app.use('/admin/', adminHomeRouter);
 
 app.use('/products',productsRouter)
-app.use('/', indexRouter);
+app.use('/', homeRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
