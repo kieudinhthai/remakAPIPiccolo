@@ -29,12 +29,11 @@ exports.get_categories = (req, res, next) => {
                                     name: product.name,
                                     vn_name: product.name,
                                     price: product.price,
-                                    rate: product.rate,
                                     image: product.image,
                                     description: product.description,
                                     request: {
                                         method: "GET",
-                                        url: "http://localhost:3000/product" + product._id,
+                                        url: "/product" + product._id,
                                     }
 
                                 }
@@ -59,7 +58,7 @@ exports.post_category = (req, res, next) => {
         _id: mongoose.Types.ObjectId(),
         ct_name: req.body.ct_name,
         vn_ct_name: req.body.vn_ct_name,
-        products: []
+       
     })
     Category.findOne({ $or: [{ ct_name: req.body.ct_name }, { vn_ct_name: req.body.vn_ct_name }] })
         .then(result => {
@@ -69,7 +68,7 @@ exports.post_category = (req, res, next) => {
             if (result) {
                 res.status(200).render('unsuccess', {
                     message: "This category is exist",
-                    back_link: "http://localhost:3000/admin/categories"
+                    back_link: "/admin/categories"
                 })
             }
             else {
@@ -77,7 +76,7 @@ exports.post_category = (req, res, next) => {
                     .then(() => {
                         res.status(200).render("success", {
                             message: "Added new category",
-                            back_link: "http://localhost:3000/admin/categories"
+                            back_link: "/admin/categories"
                         })
                     })
                     .catch(err => { res.status(500).json({ err: err }) })
@@ -100,7 +99,7 @@ exports.update_category = (req, res, next) => {
         .then(result => {
             res.status(200).render('success', {
                 message: "updated this category",
-                back_link: "http://localhost/admin/categories"
+                back_link: "/admin/categories"
             })
         })
         .catch(err => { res.status(500).json({ err: err }) })
@@ -113,7 +112,7 @@ exports.delete_category = (req, res, next) => {
         .then(result => {
             res.status(200).render('success', {
                 message: "deleted this category",
-                back_link: "http://localhost:3000/admin/categories"
+                back_link: "/admin/categories"
             })
         })
         .catch(err => { res.status(500).json({ err: err }) })

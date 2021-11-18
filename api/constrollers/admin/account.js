@@ -28,7 +28,7 @@ exports.post_login = (req, res) => {
                     res.cookie('cookieLogin', tokenLogin, { maxAge: 3000 * 60 * 60, httpOnly: true })
                     res.render("success", {
                         message: "login successful",
-                        back_link: "http://localhost:3000/admin"
+                        back_link: "/admin"
                     })
 
                 }

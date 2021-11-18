@@ -12,6 +12,6 @@ router.get('/:id',productConstrollers.get_detail_product )
 // /* GET  err. */
 // router.get("/:slug",productConstrollers.get_err)
 //GET /products/
-//router.get('/show',productConstrollers.get_all_product )
+router.get('/',productConstrollers.get_all_product )
 
 module.exports = router

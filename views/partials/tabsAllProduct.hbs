@@ -44,12 +44,12 @@
                         </div>  
                     </div>
 
-                   {{#each data.categories}}
-                        <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-{{this._id}}" role="tabpanel" aria-labelledby="v-pills-{{this._id}}-tab">
-                            <h4 class="font-italic mb-4">{{this.ct_name}}</h4>
+                   {{#each data.all_products.docs}}
+                        <div class="tab-pane fade shadow rounded bg-white p-4" id="v-pills-{{this.category._id}}" role="tabpanel" aria-labelledby="v-pills-{{this._id}}-tab">
+                            <h4 class="font-italic mb-4">{{this.category.ct_name}}</h4>
                             <div class="row">
 
-                           {{#each this.products}}
+                          
                                         <!--  -->
                                         <div class="col-lg-4 col-sm-6 col-xs-12">
                                             <div class="item" href="#">
@@ -59,12 +59,12 @@
                                                 <div class="content text-center">
                                                 <span class="name">{{this.name}}</span>
                                                 <p>Price :{{this.price}} VND</p>
-                                                <button class="button"><a href="/layout/product-detail/?key=<%=data._id%>" style="color: white; text-decoration: none ;">Tìm hiểu thêm </a></button>
+                                                <button class="button"><a href="{{this.request.url}}" style="color: white; text-decoration: none ;">Tìm hiểu thêm </a></button>
                                             </div>
                                             </div>
                                         </div>
                                    
-                            {{/each}}    
+                           
                             </div>
                         </div>
            

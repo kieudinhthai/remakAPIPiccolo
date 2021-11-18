@@ -29,10 +29,7 @@ exports.get_products = (req, res, next) => {
                                 price: doc.price,
                                 description: doc.description,
                                 image: doc.image,
-                                request: {
-                                    method: 'GET',
-                                    url: 'http://localhost:3000/' + doc._id
-                                }
+                                
                             }
                         })
                     },
@@ -61,8 +58,7 @@ exports.post_product = (req, res, next) => {
         category: req.body.category,
         price: req.body.price,
         image: req.file.filename,
-        comment: []
-    })
+           })
 
     newProduct.save()
         .then(result => {
@@ -104,7 +100,7 @@ exports.update_product = (req, res, next) => {
                 category: req.body.ct_name,
                 price: req.body.price,
                 image: image,
-                comments: comments
+                
 
             })
 

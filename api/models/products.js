@@ -13,10 +13,7 @@ const Product = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "category"
     },
-    comments:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "comment"
-    }]
+    
 }, { timestamps: true })
 //Add plugin
 mongoose.plugin(slug);
