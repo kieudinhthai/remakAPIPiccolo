@@ -8,7 +8,7 @@ const Category = require('../../models/categories')
  * GET admin/categories
  */
 
- exports.get_categories =(req, res, next) => {
+exports.get_categories = (req, res, next) => {
     Category.find({ deleted: false })
         .populate('products')
         .exec()
@@ -53,7 +53,7 @@ const Category = require('../../models/categories')
  * POST /admin/category
  */
 
-exports.post_category =(req, res, next) => {
+exports.post_category = (req, res, next) => {
 
     const newCategory = new Category({
         _id: mongoose.Types.ObjectId(),
@@ -64,10 +64,10 @@ exports.post_category =(req, res, next) => {
     Category.findOne({ $or: [{ ct_name: req.body.ct_name }, { vn_ct_name: req.body.vn_ct_name }] })
         .then(result => {
             if (result && result.deleted == true) {
-                res.status(200).render('unsuccess',{ message: "This category is in the trash" })
+                res.status(200).render('unsuccess', { message: "This category is in the trash" })
             }
             if (result) {
-                res.status(200).render('unsuccess',{
+                res.status(200).render('unsuccess', {
                     message: "This category is exist",
                     back_link: "http://localhost:3000/admin/categories"
                 })
@@ -90,10 +90,12 @@ exports.post_category =(req, res, next) => {
 /**
  *PATCH /admin/categories/:id
  */
-exports.update_category =(req, res, next) => {
+exports.update_category = (req, res, next) => {
     Category.updateOne({ _id: req.body._id }, {
-        ct_name: req.body.ct_name,
-        vn_ct_name: req.body.vn_ct_name
+        $set: {
+            ct_name: req.body.ct_name,
+            vn_ct_name: req.body.vn_ct_name
+        }
     })
         .then(result => {
             res.status(200).render('success', {
@@ -106,8 +108,8 @@ exports.update_category =(req, res, next) => {
 /**
  * DELETE /admin/categories/
  */
-exports.delete_category =(req, res, next) => {
-    Category.delete({ _id: req.body.id_delete})
+exports.delete_category = (req, res, next) => {
+    Category.delete({ _id: req.body.id_delete })
         .then(result => {
             res.status(200).render('success', {
                 message: "deleted this category",

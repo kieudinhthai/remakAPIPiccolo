@@ -64,18 +64,19 @@ exports.post_product = (req, res, next) => {
         comment: []
     })
 
-
     newProduct.save()
-        .then((result) => {
+        .then(result => {
             res.status(200).render('success', {
-                message: "added this product",
+                message: "updated this product",
                 back_link: "/admin/products"
             })
-        })
+          })
         .catch((error) => {
             res.status(500).json({ error: error })
+
         })
 }
+
 
 /**
  * PATCH admin/products
